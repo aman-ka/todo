@@ -1,0 +1,125 @@
+<html>
+    <head>
+        <title>Todo List</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@600&display=swap" rel="stylesheet">
+        <style>
+            body{
+                font-family: 'Source Code Pro', monospace;
+                background-color: #778DA9;
+            }
+            .jumbotron{
+                background-color:#0D1B2A;
+            }
+            .text{
+               color:bisque;
+            }
+            .alert-primary{
+                background-color:#E0E1DD;
+                color:#415A77;
+            }
+            .btn-success{
+                background-color: #1B263B;
+                border-color:#E0E1DD;
+            }
+            .btn-success:hover {
+                    background-color: #415A77;
+                    border-color:#E0E1DD;
+            }
+            .list-group-item-info
+            {
+                background-color: #1B263B;
+                color:bisque;
+            }
+            .list-group-item-primary
+            {
+                background-color: #E0E1DD;
+                color:#1B263B;
+            }
+            footer{
+                background-color:#0D1B2A;
+            }
+        </style>
+    </head>
+    <body>
+        <heder>
+            <div class="jumbotron">
+                <center><h1 class="text">Welcome</h1><div id="name"></div></center>
+            </div>
+        </heder>
+        <div class="container">
+            <div class="row"><div class="col-12 col-sm-6 offset-md-3"><div id="error"><div class='alert alert-primary' role='alert'>Add Your First Task</div></div></div></div>
+        <div class="row">
+            
+            <div class="col-12 col-sm-6">
+                <div class="form-group">
+                        <div class="row">
+                            <div class="col-8 col-sm-10">
+                                <input class="form-control" type="text" name="list" id="list">
+                            </div>
+                            <div class="col-2 col-sm-2">
+                                <button class="btn btn-success" style="
+                                    background-color: #1B263B;
+                                    border-color:#E0E1DD;" id="listac" name="listac" >Add</button>
+                            </div>
+                        </div>      
+                </div>
+            </div>
+            <div class="col-12 col-sm-6">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">
+                    Tasks
+                    </li>
+                    <ul id="display" class="list-group">
+
+                    </ul>
+                </ul>
+            </div>
+            </li>
+            </ul>
+        </div>
+        </div>
+        
+        <script>
+            $(document).ready(()=>{
+                let obj =[];
+                let Name=prompt("Enter your name");
+                if(Name == null)
+                {
+                     $("#name").html(`<h4 class="text">Unknown<h4>`);
+                }
+                else
+                {
+                    $("#name").html(`<h4 class="text">${Name}<h4>`);
+                }
+            $("#listac").click(()=>{
+                    let ren="";
+                    if($(list).val() != "")
+                    {
+                    obj.push($(list).val());
+                    
+                    obj.map(obj =>{      
+                            ren +=`<li class="list-group-item  list-group-item-primary">
+                                    ${obj}
+                                    </li>`;
+                    });
+                     $("#display").html(ren);
+                     $(list).val("");
+                     $("#error").html("<div class='alert alert-success' role='alert'>Task Added to schedule</div>");
+                     $("#list").attr("placeholder","Added");
+                    }
+                    else
+                    {
+                        $("#error").html("<div class='alert alert-danger' role='alert'>Enter Task First</div>");
+                        $("#list").attr("placeholder","Enter here");
+                    }
+                   
+                });
+            });
+        </script>
+    </body>
+</html>
